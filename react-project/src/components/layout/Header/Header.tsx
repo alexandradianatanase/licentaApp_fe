@@ -1,6 +1,6 @@
 import React from "react";
 import { Flex, Box, Link, Button } from "@chakra-ui/react";
-import Logo from "../../../assets/logo.JPG";
+import SearchBar from "../../common/SearchBar";
 
 const Header: React.FC = () => {
   return (
@@ -11,11 +11,15 @@ const Header: React.FC = () => {
       p={4}
       bg="secondary.500"
       color="white"
+      position="sticky"
+      top="0"
+      zIndex="999" // bigger z-index to make sure other elements does not overlap
     >
       <Box>
-        <img src={Logo} alt="Logo" style={{ width: "100px", height: "auto" }} />
+        {/* <img src={logo} alt="Logo" style={{ width: "100px", height: "auto" }} /> */}
       </Box>
-      <Flex>
+      <SearchBar />
+      <Flex alignItems="center">
         <Link mr={4}>Despre noi</Link>
         <Link mr={4}>Servicii</Link>
         <Link mr={4}>Link 3</Link>
