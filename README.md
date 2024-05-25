@@ -1,1 +1,3 @@
-# licentaApp_fe
+# Informatii despre aplicatie
+
+Numele: EventConnect
