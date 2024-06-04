@@ -1,36 +1,28 @@
-import { ChakraProvider, Box, Image, Text } from "@chakra-ui/react";
-import Header from "./components/layout/Header/Header.tsx";
-import Footer from "./components/layout/Footer/Footer.tsx";
-import CustomButton from "./components/common/Button.tsx";
-import image1 from "./assets/homepageImg1.png";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./theme";
+import HomePage from "./pages/HomePage";
+import SearchPage from "./pages/SearchPage";
+import BecomeProviderPage from "./pages/BecomeProviderPage";
+import NoPageFound from "./pages/NoPageFound";
+import Header from "./components/layout/Header/Header";
+import Footer from "./components/layout/Footer/Footer";
 
-function App() {
-  const handleRedirect = () => {
-    window.location.href = "https://v2.chakra-ui.com/docs/components/input";
-  };
-
+const App = () => {
   return (
     <ChakraProvider theme={theme}>
-      <Box>
-        <Header />
-        <Image src={image1} alt="Homepage image" width="100%" />
-        <Box
-          position="absolute"
-          top="50%"
-          left="50%"
-          transform="translate(-50%, -50%)"
-          textAlign="center"
-        >
-          <Text color="white" fontSize="65px" fontWeight="bold">
-            Let's plan together!
-          </Text>
-          <CustomButton onClick={handleRedirect}>Button</CustomButton>
-        </Box>
-        <Footer />
-      </Box>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/become-provider" element={<BecomeProviderPage />} />
+        <Route path="/search" element={<SearchPage />} />
+        {/* No Page Found */}
+        <Route path="*" element={<NoPageFound />} />
+      </Routes>
+      <Footer />
     </ChakraProvider>
   );
-}
+};
 
 export default App;
